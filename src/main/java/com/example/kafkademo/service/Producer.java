@@ -7,6 +7,9 @@ import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.Random;
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -16,7 +19,10 @@ public class Producer {
 
     public void sendMessage(String message) {
         log.info("Sending message" + message);
-        kafkaTemplate.send("duyhieu", message);
-        kafkaTemplate.send("duyhieu", message);
+        for(int i =0; i <1000; i++){
+            kafkaTemplate.send("duyhieu2", message + UUID.randomUUID());
+
+        }
+
     }
 }
